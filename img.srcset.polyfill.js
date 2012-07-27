@@ -15,6 +15,8 @@
 
 (function ($) {
 
+    "use strict";
+
     // A little feature detection first
     var srcsetSupported = "srcset" in document.createElement("img");
 
@@ -39,9 +41,9 @@
         // http://lodash.com/docs/#debounce
         var debounce = function (func, wait, immediate) {
             var args,
-            result,
-            thisArg,
-            timeoutId;
+                result,
+                thisArg,
+                timeoutId;
 
             function delayed() {
                 timeoutId = null;
@@ -52,8 +54,8 @@
 
             return function () {
                 var isImmediate = immediate && !timeoutId;
-                args = arguments;
-                thisArg = this;
+                    args = arguments;
+                    thisArg = this;
 
                 clearTimeout(timeoutId);
                 timeoutId = setTimeout(delayed, wait);
@@ -71,7 +73,7 @@
                 imgWidth = 0,
                 imgHeight = 0,
                 imgSrc = null,
-                imgSrcParts = $image.data("srcset");
+                imgSrcParts = $image.data("srcset"),
                 len = imgSrcParts.length,
                 width = $window.width(),
                 height = $window.height();
