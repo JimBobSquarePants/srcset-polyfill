@@ -131,9 +131,8 @@
             // Run from our cached list.
             $.each(imageList, function () {
 
-                var $this = $(this);
-
-                setSrc.call($this);
+                // This is jQuerified.
+                setSrc.call(this);
 
             });
 
