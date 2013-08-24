@@ -13,7 +13,7 @@ Markup
 ======
 
 ``` html
-    <img src="assets/image-480px.jpg" srcset="assets/image-480px.jpg 480w, assets/image-480px-2x.jpg 480w 2x, assets/image-768px.jpg 768w, assets/image-979px.jpg 979w" alt="srcset example" />
+<img src="assets/image-480px.jpg" srcset="image-480px.jpg 480w, image-480px-2x.jpg 480w 2x, image-768px.jpg 768w" alt="srcset example" />
 ```
 
 Support
