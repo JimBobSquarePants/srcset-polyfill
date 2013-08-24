@@ -19,3 +19,7 @@ Markup
 Support
 ==========
 Browser support is IE8+ and all other modern browsers.
+
+Licence
+==========
+Licenced under the [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.html) licence.

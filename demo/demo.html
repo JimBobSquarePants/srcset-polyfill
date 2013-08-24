@@ -13,8 +13,11 @@
         }
 
         img {
-            max-width: 100%; /*make images responsive*/
+            max-width: 100%;
             border: solid 1px #c0c0c0;
+            -webkit-box-shadow: 0 0 5px rgba(50, 50, 50, 0.48);
+            -moz-box-shadow: 0 0 5px rgba(50, 50, 50, 0.48);
+            box-shadow: 0 0 5px rgba(50, 50, 50, 0.48);
         }
 
         .main {
@@ -27,9 +30,13 @@
             position: absolute;
             right: 0;
             top: 0;
-            background: #111;
+            background: #343434;
             color: #fff;
             padding: .5em;
+            border-radius: 0 0 0 2px;
+            -webkit-box-shadow: 0 0 5px rgba(50, 50, 50, 0.48);
+            -moz-box-shadow: 0 0 5px rgba(50, 50, 50, 0.48);
+            box-shadow: 0 0 5px rgba(50, 50, 50, 0.48);
         }
     </style>
 </head>
@@ -38,9 +45,9 @@
     <div class="main">
         <h1>Srcset Polyfill</h1>
         <p>Resize the page to change the image.</p>
-        <img src="assets/image-480px.jpg" srcset="assets/image-480px.jpg 480w, assets/image-480px-2x.jpg 480w 2x, assets/image-768px.jpg 768w, assets/image-979px.jpg 979w" alt="srcset example" />
+        <img src="assets/mobile.jpg" srcset="assets/mobile.jpg 480w, assets/mobile-hd.jpg 480w 2x, assets/tablet.jpg 768w, assets/desktop.jpg 979w" alt="srcset example" />
     </div>
-    <script src="img.srcset.polyfill.js"></script>
+    <script src="../img.srcset.polyfill.js"></script>
     <script src="debug.js"></script>
 </body>
 </html>

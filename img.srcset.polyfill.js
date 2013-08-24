@@ -2,10 +2,12 @@
  * An image srcset polyfill that provides fallback behaviour for browsers
  * that do not support the srcset attribute.
  *
- * Copyright 2013 James South
+ * Copyright (c) James South
  *
- * Twitter: http://twitter.com/james_m_south
+ * Twitter:  http://twitter.com/James_M_South
  * Github: https://github.com/JimBobSquarePants/srcset-polyfill
+ * Licensed under the Apache License v2.0.
+ * http://www.apache.org/licenses/LICENSE-2.0.html
  *
  * Supports the current syntax as defined below.   
  *
@@ -34,8 +36,7 @@
 
         // Detect retina display
         // http: //www.quirksmode.org/blog/archives/2012/06/devicepixelrati.html
-        // http://stackoverflow.com/questions/16383503/window-devicepixelratio-does-not-work-in-ie-10-mobile
-        this.pixelRatio = (w.devicePixelRatio || Math.round(w.screen.availWidth / this.width) || 1.0);
+        this.pixelRatio = w.devicePixelRatio ||  1.0;
     };
 
     var SrcSet = function (viewport) {
