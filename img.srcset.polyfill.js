@@ -35,7 +35,7 @@
         // Detect retina display
         // http: //www.quirksmode.org/blog/archives/2012/06/devicepixelrati.html
         // http://stackoverflow.com/questions/16383503/window-devicepixelratio-does-not-work-in-ie-10-mobile
-        this.pixelRatio = (w.devicePixelRatio || (w.screen.availWidth / this.width).toFixed(1) || 1.0);
+        this.pixelRatio = (w.devicePixelRatio || Math.round(w.screen.availWidth / this.width) || 1.0);
     };
 
     var SrcSet = function (viewport) {
@@ -216,17 +216,17 @@
     if (w.addEventListener) {
 
         w.addEventListener("resize", setSources, false);
-        
+
         w.addEventListener("DOMContentLoaded", function () {
-            
+
             setSources();
-            
+
             // Run once only
             w.removeEventListener("load", setSources, false);
         }, false);
-        
+
         w.addEventListener("load", setSources, false);
-        
+
     } else if (w.attachEvent) {
 
         // Only attach onload as IE8 isn't responsive aware anyway.

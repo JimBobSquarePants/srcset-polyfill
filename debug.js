@@ -3,7 +3,7 @@
     // Detect retina display
     // http: //www.quirksmode.org/blog/archives/2012/06/devicepixelrati.html
     // http://stackoverflow.com/questions/16383503/window-devicepixelratio-does-not-work-in-ie-10-mobile
-    var pixelRatio = (w.devicePixelRatio || (w.screen.availWidth / (w.innerWidth || d.documentElement.clientWidth)).toFixed(1) || 1.0),
+    var pixelRatio = (w.devicePixelRatio || Math.round(w.screen.availWidth / (w.innerWidth || d.documentElement.clientWidth)) || 1.0),
         debug = document.getElementById("debug");
 
     var getViewPortDetails = function () {
