@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Image Srcset Polyfill</title>
+    <meta name="description" content="A srcset polyfill for responsive images.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style type="text/css">
+        body {
+            font-family: Arial, Verdana, Sans-Serif;
+            background-color: #f9f9f9;
+            padding-top: 1em;
+        }
+
+        img {
+            max-width: 100%;
+            border: solid 1px #c0c0c0;
+            -webkit-box-shadow: 0 0 5px rgba(50, 50, 50, 0.48);
+            -moz-box-shadow: 0 0 5px rgba(50, 50, 50, 0.48);
+            box-shadow: 0 0 5px rgba(50, 50, 50, 0.48);
+        }
+
+        .container {
+            width: 95%;
+            max-width: 980px;
+            margin: 0 auto;
+        }
+
+        .forkme, .forkme:visited {
+            display: block;
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: 10px 50px 10px 10px;
+            color: #fff;
+            background: url('assets/blacktocat.png') #343434 no-repeat 95% 50%;
+            text-decoration: none;
+            text-transform: uppercase;
+            border-radius: 0 0 0 2px;
+            -webkit-box-shadow: 0 0 5px rgba(50, 50, 50, 0.48);
+            -moz-box-shadow: 0 0 5px rgba(50, 50, 50, 0.48);
+            box-shadow: 0 0 5px rgba(50, 50, 50, 0.48);
+        }
+
+            .forkme:hover {
+                background-color: #444;
+            }
+
+        .twitter-share-button {
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <a class="forkme" href="https://github.com/JimBobSquarePants/srcset-polyfill">fork me on github</a>
+    <div class="container">
+        <h1>Srcset Polyfill</h1>
+        <h2>A framework independant img srcset javascript polyfill.</h2>
+        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://jimbobsquarepants.github.io/srcset-polyfill/" data-text="A framework independant img srcset #javascript polyfill to make #rwd easier" data-via="James_M_South" data-hashtags="webperf">Tweet</a>
+        <script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = "//platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } }(document, "script", "twitter-wjs");</script>
+        <p>Resize the page to change the image.</p>
+        <img src="assets/mobile.jpg" srcset="assets/mobile.jpg 480w, assets/mobile-hd.jpg 480w 2x, assets/tablet.jpg 768w, assets/desktop.jpg 979w" alt="srcset example" />
+        <div>
+            <p>
+                Srcset Polyfill was built for your benefit by <a href="https://github.com/JimBobSquarePants" rel="author" target="_blank">JimBobSquarePants</a>. You can find him on twitter <a href="https://twitter.com/James_M_South" rel="author" target="_blank">@James_M_South</a>
+            </p>
+            <p>Code licensed under <a href="http://www.apache.org/licenses/LICENSE-2.0" rel="license" target="_blank">Apache License v2.0</a></p>
+        </div>
+    </div>
+    <script src="img.srcset.polyfill.js"></script>
+</body>
+</html>
