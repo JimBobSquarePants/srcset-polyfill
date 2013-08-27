@@ -12,7 +12,7 @@ http://lists.whatwg.org/pipermail/whatwg-whatwg.org/2012-May/035746.html
 Usage
 =====
 
-Just reference the script from your webpage and the script will automatically do th rest.
+Just reference the script from your webpage and the script will automatically do the rest.
 
 Markup
 ======
