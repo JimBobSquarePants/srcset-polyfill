@@ -1,7 +1,7 @@
 Srcset Polyfill
 ===============
 
-An image srcset polyfill that provides fallback behaviour for browsers that do not support the srcset attribute.
+An image `srcset` polyfill that provides fallback behaviour for browsers that do not support the srcset attribute.
 
 Supports the current syntax as defined below.   
 
