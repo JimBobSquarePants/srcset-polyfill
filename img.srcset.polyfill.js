@@ -1,4 +1,4 @@
-﻿/*!
+/**
  * An image srcset polyfill that provides fallback behaviour for browsers
  * that do not support the srcset attribute.
  *
@@ -58,7 +58,7 @@
         constructor: SrcSet,
         parseImage: function (img) {
             /// <summary>Parses the image to produce a list of source candidates.</summary>
-            /// <param name="img" type="HTML">The element to prduce the list of source candidates for.</param>
+            /// <param name="img" type="HTML">The element to produce the list of source candidates for.</param>
             /// <returns type="SrcSet">The object for chaining.</returns>
 
             // Regexes for matching queries.
@@ -92,16 +92,17 @@
             // Return for chaining.
             return this;
         },
-        getBestCandidate: function () {
+        getBestCandidate: function (viewport) {
             /// <summary>
             /// Get the best src candidate as per the steps outlined here.
             /// http://www.whatwg.org/specs/web-apps/current-work/multipage/embedded-content-1.html#processing-the-image-candidates
             /// </summary>
-
+            /// <param name="viewport" type="Viewport">Provides the height, width, and pixel ratio of the current viewport.</param>
+            
             var images = this.candidates,
-                width = this.viewport.width,
-                height = this.viewport.height,
-                pixelRatio = this.viewport.pixelRatio,
+                width = viewport.width,
+                height = viewport.height,
+                pixelRatio = viewport.pixelRatio,
                 getBestCandidate = function (criteria) {
                     var i,
                         length = images.length,
@@ -141,7 +142,6 @@
             var largestWidth = getBestCandidate(function (a, b) { return a.width > b.width; });
             removeCandidate(function (a) { return a.width < width; });
 
-            // If no candidates are left, keep the one with largest width.
             if (images.length === 0) {
                 images = [largestWidth];
             }
@@ -152,7 +152,6 @@
             var largestHeight = getBestCandidate(function (a, b) { return a.height > b.height; });
             removeCandidate(function (a) { return a.height < height; });
 
-            // If no candidates are left, keep the one with largest height.
             if (images.length === 0) {
                 images = [largestHeight];
             }
@@ -163,7 +162,6 @@
             var largestPixelRatio = getBestCandidate(function (a, b) { return a.pixelRatio > b.pixelRatio; });
             removeCandidate(function (a) { return a.pixelRatio < pixelRatio; });
 
-            // If no candidates are left, keep the one with largest pixel ratio.
             if (images.length === 0) {
                 images = [largestPixelRatio];
             }
@@ -202,9 +200,9 @@
         // Loop through, calculate and set the correct source.
         for (i = 0; i < length; i += 1) {
 
-            var srcSet = new SrcSet(viewport),
+            var srcSet = new SrcSet(),
                 image = images[i],
-                candidate = srcSet.parseImage(image).getBestCandidate();
+                candidate = srcSet.parseImage(image).getBestCandidate(viewport);
 
             if (candidate) {
 
@@ -213,10 +211,22 @@
         }
     };
 
+    var resizeTimer;
+
     // Run on resize and domready (w.load as a fallback)
     if (w.addEventListener) {
 
-        w.addEventListener("resize", setSources, false);
+        w.addEventListener("resize", function () {
+        
+            // Throttle the method.
+            if (resizeTimer) {
+                w.clearTimeout(resisizeTimer);
+            }
+          
+            resizeTimer = w.setTimeout(setSources, 50);
+            
+
+        }, false);
 
         w.addEventListener("DOMContentLoaded", function () {
 
