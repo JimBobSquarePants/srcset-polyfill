@@ -220,7 +220,7 @@
         
             // Throttle the method.
             if (resizeTimer) {
-                w.clearTimeout(resisizeTimer);
+                w.clearTimeout(resizeTimer);
             }
           
             resizeTimer = w.setTimeout(setSources, 50);
