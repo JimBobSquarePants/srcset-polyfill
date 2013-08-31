@@ -29,7 +29,7 @@ Browser support is IE8+ and all other modern browsers.
 
 Caveats
 ==========
-Using the polyfill will result in 2 requests per element if the image is to be changed. A possible workaround would be to use a base 64 encoded image as the default src. This however, will not gracefully fallback for browsers where JavaScript is turned off. It may also be an issue for SEO but this is unkown at this time.
+Using the polyfill will result in 2 requests per element if the image is to be changed. A possible workaround would be to use a base 64 encoded image as the default src. This however, will not gracefully fallback for browsers where JavaScript is turned off. It may also be an issue for SEO but this is unknown at this time.
 
 ``` html
 <!--
@@ -37,7 +37,7 @@ Using the polyfill will result in 2 requests per element if the image is to be c
 http://probablyprogramming.com/2009/03/15/the-tiniest-gif-ever
 -->
 <img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
-     alt="no color palette 1x1 gif" />
+     alt="no color-palette 1x1 gif" />
 ```
 
 This image could be hidden easily enough using CSS.
