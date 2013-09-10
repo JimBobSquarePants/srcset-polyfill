@@ -43,7 +43,7 @@ http://probablyprogramming.com/2009/03/15/the-tiniest-gif-ever
 This image could be hidden easily enough using CSS.
 
 ``` css
-img[src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="] {
+img[src^="data:image/gif;base64"] {
     visibility: hidden;
 }
 ```
