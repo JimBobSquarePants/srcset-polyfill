@@ -98,7 +98,6 @@
             /// http://www.whatwg.org/specs/web-apps/current-work/multipage/embedded-content-1.html#processing-the-image-candidates
             /// </summary>
             /// <param name="viewport" type="Viewport">Provides the height, width, and pixel ratio of the current viewport.</param>
-            
             var images = this.candidates,
                 width = viewport.width,
                 height = viewport.height,
@@ -135,6 +134,10 @@
                         }
                     }
                 };
+
+            if (images.length === 0) {
+                return null;
+            }
 
             // If there are any entries in candidates that have an associated width that is less than max width, 
             // then remove them, unless that would remove all the entries, in which case remove only the entries 
