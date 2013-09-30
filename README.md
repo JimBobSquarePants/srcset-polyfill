@@ -52,7 +52,8 @@ Using `about:blank` or an empty src `src=""` is invalid as they both violate sec
 
 > The src attribute must be present, and must contain a valid non-empty URL potentially surrounded by spaces referencing a non-interactive, optionally animated, image resource that is neither paged nor scripted.
 
-Discussion regarding this problem is encouraged.
+
+**Discussion regarding this problem is encouraged.**
 
 Licence
 ==========
