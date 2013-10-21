@@ -22,11 +22,6 @@
     // A little feature detection first
     var srcsetSupported = "srcset" in document.createElement("img");
 
-    if (srcsetSupported) {
-        // No need to process anything further.
-        return;
-    }
-
     // Used for housing viewport information.
     var Viewport = function () {
         /// <summary>Provides the height, width, and pixel ratio of the current viewport.</summary>
@@ -36,7 +31,7 @@
 
         // Detect retina display
         // http: //www.quirksmode.org/blog/archives/2012/06/devicepixelrati.html
-        this.pixelRatio = w.devicePixelRatio ||  1.0;
+        this.pixelRatio = w.devicePixelRatio || 1.0;
     };
 
     var SrcSet = function (viewport) {
@@ -192,6 +187,11 @@
     var setSources = function () {
         /// <summary>Loops through the images in the current page and sets the correct source.</summary>
 
+        if (srcsetSupported) {
+            // No need to process anything further.
+            return;
+        }
+
         // Get the current viewport information.
         var viewport = new Viewport();
 
@@ -214,37 +214,45 @@
         }
     };
 
-    var resizeTimer;
+    var resizeTimer,
+
+        addEventHandler = function (eventType, handler) {
+            /// <summary>Cross browser event handling.</summary>
+            /// <param name="eventType" type="String">The name of the event to bind.</param>
+            /// <param name="handler" type="Function">The event handler to call.</param>
+
+            if (w.addEventListener) {
+
+                w.addEventListener(eventType, handler, false);
+
+            } else if (w.attachEvent && eventType !== "DOMContentLoaded") {
+                w.attachEvent("on" + eventType, handler);
+            }
+        };
 
     // Run on resize and domready (w.load as a fallback)
-    if (w.addEventListener) {
+    addEventHandler("DOMContentLoaded", function () {
 
-        w.addEventListener("resize", function () {
-        
-            // Throttle the method.
-            if (resizeTimer) {
-                w.clearTimeout(resizeTimer);
-            }
-          
-            resizeTimer = w.setTimeout(setSources, 50);
-            
+        setSources();
 
-        }, false);
+        // Run once only
+        w.removeEventListener("load", setSources, false);
+    });
 
-        w.addEventListener("DOMContentLoaded", function () {
+    addEventHandler("load", setSources);
 
-            setSources();
+    addEventHandler("resize", function () {
 
-            // Run once only
-            w.removeEventListener("load", setSources, false);
-        }, false);
+        // Throttle the method.
+        if (resizeTimer) {
+            w.clearTimeout(resizeTimer);
+        }
 
-        w.addEventListener("load", setSources, false);
+        resizeTimer = w.setTimeout(setSources, 50);
+    });
 
-    } else if (w.attachEvent) {
-
-        // Only attach onload as IE8 isn't responsive aware anyway.
-        w.attachEvent("onload", setSources);
-    }
+    // Assign back to the window to allow hooking in
+    // for ajax events.
+    w.srcset = setSources;
 
 }(window, document));

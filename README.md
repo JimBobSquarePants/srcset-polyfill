@@ -13,6 +13,7 @@ Usage
 =====
 
 Just reference the script from your webpage and the script will automatically do the rest.
+For images loaded dynamically call `window.srcset()` to force the browser to set the correct source for those images. 
 
 Markup
 ======
@@ -43,7 +44,7 @@ http://probablyprogramming.com/2009/03/15/the-tiniest-gif-ever
 This image could be hidden easily enough using CSS.
 
 ``` css
-img[src^="data:image/gif;base64"] {
+img[src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="] {
     visibility: hidden;
 }
 ```
