@@ -58,9 +58,9 @@
 
             // Regexes for matching queries.
             var rSrc = /[^\s]+/,
-                rHeight = /(\d+)h/,
-                rWidth = /(\d+)w/,
-                rRatio = /(\d+((\.\d+)?))x/;
+                rHeight = /\s(\d+)h/,
+                rWidth = /\s(\d+)w/,
+                rRatio = /\s(\d+((\.\d+)?))x/;
 
             // Parse the srcset from the image element.
             var srcset = img.getAttribute("srcset"),
