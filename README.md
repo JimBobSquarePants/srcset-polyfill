@@ -1,6 +1,9 @@
 Srcset Polyfill
 ===============
 
+**This implementation does not now match the updated spec and will also fail feature detection tests in current browsers.
+Unfortunately I do not have time to maintain the repo but if someone is willing to take over I am happy to hand over the reins.**
+
 An image `srcset` polyfill that provides fallback behaviour for browsers that do not support the srcset attribute.
 
 Supports the current syntax as defined below.   
