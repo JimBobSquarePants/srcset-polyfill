@@ -1,0 +1,22 @@
+{
+  "name": "srcset-polyfill",
+  "version": "0.1.0",
+  "homepage": "http://jimbobsquarepants.github.io/srcset-polyfill/",
+  "authors": [
+    "James South"
+  ],
+  "description": "An image srcset polyfill that provides fallback behaviour for browsers that do not support the srcset attribute.",
+  "main": "img.srcset.polyfill.js",
+  "keywords": [
+    "image",
+    "srcset"
+  ],
+  "license": "http://www.apache.org/licenses/LICENSE-2.0",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
